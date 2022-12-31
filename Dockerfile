@@ -10,6 +10,6 @@ RUN microdnf -y --nodocs install sshguard-$version \
  && microdnf clean all \
  && rm -rf /var/lib/dnf /var/cache/*
 
-COPY sshguard.conf /etc/sshguard.conf
+COPY sshguard.* /etc/
 
 ENTRYPOINT [ "sshguard" ]

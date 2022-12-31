@@ -12,7 +12,17 @@ SSH Guard as Docker Image.
 
 most simple way of running the container
 
-    docker run --rm -it noenv/sshguard
+    docker run -d --net=host --cap-add=CAP_NET_ADMIN,CAP_NET_RAW -v /var/log/journal:/var/log/journal:ro noenv/sshguard
+
+#### Check for blocked ips
+
+    nft list set ip sshguard attackers
+    nft list set ip6 sshguard attackers
+
+#### Check for the sshguard nftable
+
+    nft list table ip sshguard
+    nft list table ip6 sshguard
 
 #### Source
 
