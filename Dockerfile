@@ -1,12 +1,15 @@
-FROM alpine:3.17
+FROM registry.fedoraproject.org/fedora-minimal:37
 
 LABEL maintainer "NoEnv"
 LABEL version "2.4.2"
 LABEL description "SSH Guard as Docker Image"
 
-ARG version="2.4.2-r1"
+ARG version="2.4.2"
 
-RUN apk add --no-cache --purge --clean-protected -u nftables sshguard=$version \
- && rm -rf /var/cache/apk/*
+RUN microdnf -y --nodocs install sshguard-$version \
+ && microdnf clean all \
+ && rm -rf /var/lib/dnf /var/cache/*
 
-CMD [ "sshguard", "-h" ]
+COPY sshguard.conf /etc/sshguard.conf
+
+ENTRYPOINT [ "sshguard" ]
