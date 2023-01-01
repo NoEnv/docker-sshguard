@@ -24,6 +24,17 @@ most simple way of running the container
     nft list table ip sshguard
     nft list table ip6 sshguard
 
+#### Manually remove blocked ips
+
+single ipv4
+
+    nft delete element ip sshguard attackers { 10.20.30.40 }
+
+flush whole list
+
+    nft flush ip sshguard attackers
+
+
 #### Source
 
 https://github.com/noenv/docker-sshguard
