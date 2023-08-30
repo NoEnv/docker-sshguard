@@ -6,7 +6,7 @@ LABEL description "SSH Guard as Docker Image"
 
 ARG version="2.4.2"
 
-RUN microdnf -y --nodocs install sshguard-$version \
+RUN microdnf -y --nodocs install sshguard-nftables-$version \
  && microdnf clean all \
  && rm -rf /var/lib/dnf /var/cache/*
 
