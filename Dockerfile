@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:37
+FROM registry.fedoraproject.org/fedora-minimal:38
 
 LABEL maintainer "NoEnv"
 LABEL version "2.4.2"
